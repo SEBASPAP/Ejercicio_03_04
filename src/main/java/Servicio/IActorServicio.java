@@ -14,6 +14,6 @@ import java.util.List;
 public interface IActorServicio {
     public Actor crear(Actor actor);
     public List<Actor>listar();
-    public Actor modificar(int codigoPersonaje, Actor actorjeNuevo);
+    public Actor modificar(Actor actor);
     public Actor eliminar(int codigopersonaje);
 }

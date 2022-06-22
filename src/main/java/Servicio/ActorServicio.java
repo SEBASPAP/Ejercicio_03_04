@@ -28,13 +28,20 @@ public class ActorServicio implements IActorServicio{
     }
 
     @Override
-    public Actor modificar(int codigoPersonaje, Actor actorjeNuevo) {
+    public Actor eliminar(int codigopersonaje) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Actor eliminar(int codigopersonaje) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Actor modificar(Actor actor) {
+        for (int i = 0; i < actorList.size();i++){
+            Actor ac = actorList.get(i);
+            if(ac.getNombre() == actor.getNombre()){
+                actorList.set(i,actor);
+                break;
+            }
+        }
+        return null;
     }
     
 }

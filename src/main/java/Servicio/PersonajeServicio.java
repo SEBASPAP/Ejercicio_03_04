@@ -40,8 +40,15 @@ public class PersonajeServicio implements IPersonajeServicio{
     }
 
     @Override
-    public Personaje modificar(String nombre, Personaje PersonajeNuevo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Personaje modificarPer(Personaje personaje) {
+        for (int i = 0; i < personajeList.size();i++){
+            Personaje pr = personajeList.get(i);
+            if(pr.getNombre() == personaje.getNombre()){
+                personajeList.set(i,personaje);
+                break;
+            }
+        }
+        return null;
     }
 
     @Override

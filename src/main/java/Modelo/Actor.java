@@ -4,6 +4,7 @@
  */
 package Modelo;
 
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -17,6 +18,7 @@ public class Actor {
     public int edad;
     Personaje Personaje;
     Pelicula Pelicula;
+    
     
     public Actor(String nombre, String nacionalidad, int fechanacimiento, int edad, Personaje Personaje, Pelicula Pelicula) {
         this.nombre = nombre;
@@ -111,4 +113,5 @@ public class Actor {
                 + "fechanacimiento=" + fechanacimiento + ", edad=" + edad + ", Personaje=" 
                 + Personaje + ", Pelicula=" + Pelicula + '}';
     }  
+    
 }

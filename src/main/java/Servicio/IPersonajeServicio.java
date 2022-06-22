@@ -14,7 +14,7 @@ import java.util.List;
 public interface IPersonajeServicio {
     public Personaje crear(Personaje personaje);
     public List<Personaje>listar();
-    public Personaje modificar(String nombre, Personaje PersonajeNuevo);
+    public Personaje modificarPer(Personaje personaje);
     public Personaje eliminar(String nombre);
     
 }
