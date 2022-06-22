@@ -27,36 +27,14 @@ public class PeliculaServicio implements IPeliculaServicio{
         return this.peliculaList;
     }
 
-//    @Override
-//    public Pelicula modificar(String genero, Pelicula peliculaNuevo) {
-     //   var posicion = this.buscarPosicion(peliculaNuevo);
-//        this.listar().get(posicion).setNombre(peliculaNuevo.getNombre());
-//        this.listar().get(posicion).setGenero(peliculaNuevo.getGenero());
-//        this.listar().get(posicion).setPaisOrigen(peliculaNuevo.getPaisOrigen());
-//        this.listar().get(posicion).setFechaPublicacion(peliculaNuevo.getFechaPublicacion());
-//        this.listar().get(posicion).setPersonaje(peliculaNuevo.getPersonaje());
-//        return peliculaNuevo;
-//    }
-
-//    @Override
-//    public int buscarPosicion(Pelicula pelicula) {
-//       int posicion=-1; 
-//        for(var b:this.peliculaList){
-//            posicion++; 
-//            if(b.getGenero()==pelicula.getGenero()){
-//                break;
-//            }
-//        }
-//        return posicion;
-//    }
-
     @Override
-    public Pelicula modificar(String genero, Pelicula peliculaNuevo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public Pelicula buscar(String pelicula) {
+        for (Pelicula pel : this.listar()) {
+            if(pelicula.equals(pel.getNombreActor())){
+                return pel;
+            }
+        }
+        return null;
     }
 
-    @Override
-    public Pelicula eliminar(String nombre) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

@@ -14,6 +14,5 @@ import java.util.List;
 public interface IPeliculaServicio {
     public Pelicula crear(Pelicula pelicula);
     public List<Pelicula>listar();
-    public Pelicula modificar(String genero, Pelicula peliculaNuevo);
-    public Pelicula eliminar(String nombre);
+    public Pelicula buscar(String pelicula);
 }

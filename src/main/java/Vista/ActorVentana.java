@@ -7,6 +7,8 @@ package Vista;
 import Controlador.ActorControl;
 import Modelo.Actor;
 import javax.swing.table.DefaultTableModel;
+import Controlador.PeliculaControl;
+import Controlador.PersonajeControl;
 
 /**
  *
@@ -15,10 +17,14 @@ import javax.swing.table.DefaultTableModel;
 public class ActorVentana extends javax.swing.JFrame {
 
     private ActorControl actorCtrl;
+    private PersonajeControl personajeControl;
+    private PeliculaControl peliculaControl;
 
     public ActorVentana() {
         initComponents();
         actorCtrl = new ActorControl();
+        personajeControl = new PersonajeControl();
+        peliculaControl = new PeliculaControl();
     }
 
     public void cargarActorTabla() {
@@ -29,8 +35,8 @@ public class ActorVentana extends javax.swing.JFrame {
                 actor.getNacionalidad(),
                 actor.getFechanacimiento(),
                 actor.getEdad(),
-                actor.getPelicula(),
-                actor.getPersonaje(),};
+                actor.getPelicula().getNombre(),
+                actor.getPersonaje().getNombrePer(),};
             modelo.addRow(rowData);
         }
         TablaActor.setModel(modelo);
@@ -118,6 +124,11 @@ public class ActorVentana extends javax.swing.JFrame {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        TablaActor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TablaActorMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(TablaActor);
@@ -209,11 +220,13 @@ public class ActorVentana extends javax.swing.JFrame {
         Actor actor = new Actor(nombre, nacionalidad, fecha, edad);
 
         if (!nombre.isBlank() && !nacionalidad.isBlank() && !txtfecha.getText().isBlank() && !txtedad.getText().isBlank()) {
-            String[] params = new String[2];
-            params[0] = nombre;
-            params[1] = nacionalidad;
+            if (!personajeControl.buscar(nombre).equals(null) && !peliculaControl.buscar(nombre).equals(null)) {
+                String[] params = new String[2];
+                params[0] = nombre;
+                params[1] = nacionalidad;
 
-            actorCtrl.crear(params, fecha, edad);
+                actorCtrl.crear(params, fecha, edad,personajeControl.buscar(nombre),peliculaControl.buscar(nombre));
+            }
         }
         cargarActorTabla();
         txtnombre.setText("");
@@ -231,27 +244,78 @@ public class ActorVentana extends javax.swing.JFrame {
 
         Actor actor = new Actor(nombre, nacionalidad, fecha, edad);
 
-        if (!nombre.isBlank() && !nacionalidad.isBlank() && !txtfecha.getText().isBlank() && !txtedad.getText().isBlank()) {
-            String[] params = new String[2];
-            params[0] = nombre;
-            params[1] = nacionalidad;
+        System.out.println(personajeControl.buscar(nombre));
+        System.out.println(peliculaControl.buscar(nombre));
 
-            actorCtrl.crear(params, fecha, edad);
+        if (!nombre.isBlank() && !nacionalidad.isBlank() && !txtfecha.getText().isBlank() && !txtedad.getText().isBlank()) {
+
+            if (!personajeControl.buscar(nombre).equals(null) && !peliculaControl.buscar(nombre).equals(null)) {
+                String[] params = new String[2];
+                params[0] = nombre;
+                params[1] = nacionalidad;
+
+                actorCtrl.crear(params, fecha, edad,personajeControl.buscar(nombre),peliculaControl.buscar(nombre));
+            }
         }
 
         txtnombre.setText("");
         txtnacionalidad.setText("");
         txtfecha.setText("");
         txtedad.setText("");
+
+
     }//GEN-LAST:event_btncrearActionPerformed
 
     private void btnmodificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodificarActionPerformed
-        // TODO add your handling code here:
+        String nombre = txtnombre.getText();
+        String nacionalidad = txtnacionalidad.getText();
+
+        int fecha = Integer.parseInt(txtfecha.getText());
+        int edad = Integer.parseInt(txtedad.getText());
+
+        Actor actor = new Actor(nombre, nacionalidad, fecha, edad);
+
+        if (!nombre.isBlank() && !nacionalidad.isBlank() && !txtfecha.getText().isBlank() && !txtedad.getText().isBlank()) {
+            String[] params = new String[2];
+            params[0] = nombre;
+            params[1] = nacionalidad;
+
+            actorCtrl.modificar(params, fecha, edad,personajeControl.buscar(nombre),peliculaControl.buscar(nombre));
+        }
+        cargarActorTabla();
+
+        txtnombre.setText("");
+        txtnacionalidad.setText("");
+        txtfecha.setText("");
+        txtedad.setText("");
+
     }//GEN-LAST:event_btnmodificarActionPerformed
 
     private void btneliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btneliminarActionPerformed
-        // TODO add your handling code here:
+
+        String nombre = txtnombre.getText();
+        actorCtrl.eliminar(nombre);
+        cargarActorTabla();
+        txtnombre.setText("");
+        txtnacionalidad.setText("");
+        txtfecha.setText("");
+        txtedad.setText("");
     }//GEN-LAST:event_btneliminarActionPerformed
+
+    private void TablaActorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TablaActorMouseClicked
+        // TODO add your handling code here:
+        int fila = TablaActor.getSelectedRow();
+        String nombre = TablaActor.getValueAt(fila, 0).toString();
+        String nacionalidad = TablaActor.getValueAt(fila, 1).toString();
+        int fecha = (int) TablaActor.getValueAt(fila, 2);
+        int edad = (int) TablaActor.getValueAt(fila, 3);
+
+        txtnombre.setText(nombre);
+        txtnacionalidad.setText(nacionalidad);
+        txtfecha.setText(String.valueOf(fecha));
+        txtedad.setText(String.valueOf(edad));
+
+    }//GEN-LAST:event_TablaActorMouseClicked
 
     /**
      * @param args the command line arguments

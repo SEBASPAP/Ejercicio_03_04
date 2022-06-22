@@ -15,5 +15,6 @@ public interface IActorServicio {
     public Actor crear(Actor actor);
     public List<Actor>listar();
     public Actor modificar(Actor actor);
-    public Actor eliminar(int codigopersonaje);
+    public Actor eliminar(String nombre);
+    public boolean buscar(String personaje,String pelicula);
 }

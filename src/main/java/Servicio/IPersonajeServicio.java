@@ -15,6 +15,6 @@ public interface IPersonajeServicio {
     public Personaje crear(Personaje personaje);
     public List<Personaje>listar();
     public Personaje modificarPer(Personaje personaje);
-    public Personaje eliminar(String nombre);
+    public Personaje buscar(String personaje);
     
 }

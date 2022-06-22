@@ -23,17 +23,6 @@ public class PersonajeServicio implements IPersonajeServicio{
         return personaje; 
     }
     
-//    public Personaje buscar(String nombre) {
-//        Personaje personaje=null;
-//        for(var c:this.personajeList){
-//            if(nombre==c.getNombre()){
-//                personaje=c;
-//                break;
-//            }
-//        }
-//        return personaje;
-//    }
-    
     
     public List<Personaje> listar() {
         return this.personajeList; 
@@ -48,15 +37,17 @@ public class PersonajeServicio implements IPersonajeServicio{
                 break;
             }
         }
-        return null;
+       return null;
     }
+
 
     @Override
-    public Personaje eliminar(String nombre) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-   
-    
-         
+    public Personaje buscar(String personaje) {
+        for (Personaje pers : this.listar()) {
+            if(personaje.equals(pers.getNombre())){
+                return pers;
+            }
+        }
+        return null;
+    }       
 }

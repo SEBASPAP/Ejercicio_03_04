@@ -18,6 +18,16 @@ public class Actor {
     public int edad;
     Personaje Personaje;
     Pelicula Pelicula;
+
+  
+    
+    public Actor(String nombre, String nacionalidad, int fechanacimiento, int edad) {
+        this.nombre = nombre;
+        this.nacionalidad = nacionalidad;
+        this.fechanacimiento = fechanacimiento;
+        this.edad = edad;
+    }
+    
     
     
     public Actor(String nombre, String nacionalidad, int fechanacimiento, int edad, Personaje Personaje, Pelicula Pelicula) {
@@ -27,14 +37,6 @@ public class Actor {
         this.edad = edad;
         this.Personaje = Personaje;
         this.Pelicula = Pelicula;
-    }
-
-
-    public Actor(String nombre, String nacionalidad, int fechanacimiento, int edad) {
-        this.nombre = nombre;
-        this.nacionalidad = nacionalidad;
-        this.fechanacimiento = fechanacimiento;
-        this.edad = edad;
     }
 
     public String getNombre() {
@@ -113,5 +115,13 @@ public class Actor {
                 + "fechanacimiento=" + fechanacimiento + ", edad=" + edad + ", Personaje=" 
                 + Personaje + ", Pelicula=" + Pelicula + '}';
     }  
+    
+//    public Personaje modificarPer(Personaje personaje) {
+//        
+//        if (personaje.getNombre()== Personaje.getNombre()){
+//            
+//        }
+//       return null;
+//    }
     
 }

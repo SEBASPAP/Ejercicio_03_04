@@ -26,5 +26,8 @@ public class PersonajeControl {
     {
         return this.personajeServicio.listar();
     } 
-
+    
+    public Personaje buscar(String nombre){
+        return this.personajeServicio.buscar(nombre);
+    }
 }

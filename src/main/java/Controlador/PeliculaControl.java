@@ -26,4 +26,9 @@ public class PeliculaControl {
     {
         return this.peliculaServicio.listar();
     }
+    
+    public Pelicula buscar(String nombre){
+        
+        return this.peliculaServicio.buscar(nombre);
+    }
 }

@@ -28,20 +28,32 @@ public class ActorServicio implements IActorServicio{
     }
 
     @Override
-    public Actor eliminar(int codigopersonaje) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    @Override
-    public Actor modificar(Actor actor) {
-        for (int i = 0; i < actorList.size();i++){
-            Actor ac = actorList.get(i);
-            if(ac.getNombre() == actor.getNombre()){
-                actorList.set(i,actor);
+    public Actor eliminar(String nombre) {
+        for (int i = 0; i < this.actorList.size();i++){
+            Actor ac = this.actorList.get(i);
+            if(  nombre.equals(ac.getNombre())){
+                this.actorList.remove(i);
                 break;
             }
         }
         return null;
+    }
+
+    @Override
+    public Actor modificar(Actor actor) {
+        for (int i = 0; i < this.actorList.size();i++){
+            Actor ac = this.actorList.get(i);
+            if(  actor.getNombre().equals(ac.getNombre())){
+                this.actorList.set(i,actor);
+                break;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public boolean buscar(String personaje, String pelicula) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }
