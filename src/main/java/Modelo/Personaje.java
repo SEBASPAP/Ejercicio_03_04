@@ -12,14 +12,25 @@ import java.util.Objects;
  */
 public class Personaje {
     public String nombre;
+    public String nombrePer;
     public String funcionPer;
     public String generoMof;
 
-    public Personaje(String nombre, String funcionPer, String generoMof) {
+    public Personaje(String nombre, String nombrePer, String funcionPer, String generoMof) {
         this.nombre = nombre;
+        this.nombrePer = nombrePer;
         this.funcionPer = funcionPer;
         this.generoMof = generoMof;
     }
+
+    public String getNombrePer() {
+        return nombrePer;
+    }
+
+    public void setNombrePer(String nombrePer) {
+        this.nombrePer = nombrePer;
+    }
+
 
     public String getNombre() {
         return nombre;
@@ -67,10 +78,12 @@ public class Personaje {
         return Objects.equals(this.nombre, other.nombre);
     }
 
-    
     @Override
     public String toString() {
-        return "Personaje{" + "nombre=" + nombre + ", funcionPer=" + funcionPer + ", generoMof=" + generoMof + '}';
+        return "Personaje{" + "nombre=" + nombre + ", nombrePer=" + nombrePer + ", funcionPer=" + funcionPer + ", generoMof=" + generoMof + '}';
     }
+
+    
+
 
 }

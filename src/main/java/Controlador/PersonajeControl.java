@@ -17,7 +17,7 @@ public class PersonajeControl {
    private final PersonajeServicio personajeServicio = new PersonajeServicio(); 
     
     public Personaje crear(String [] params){
-        var personaje = new Personaje(params[0],params[1],params[2]); 
+        var personaje = new Personaje(params[0],params[1],params[2],params[3]); 
         this.personajeServicio.crear(personaje);
         return personaje;
     }

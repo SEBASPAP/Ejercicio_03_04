@@ -30,7 +30,7 @@ public class PersonajeVentana extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) TablaPersonaje.getModel();
         modelo.setRowCount(0);
         for (Personaje personaje : personajeCtrl.listar()) {
-            Object[] rowData = {personaje.getNombre(), personaje.getFuncionPer(), personaje.getGeneroMof()};
+            Object[] rowData = {personaje.getNombre(), personaje.getNombrePer(), personaje.getFuncionPer(), personaje.getGeneroMof()};
             modelo.addRow(rowData);
         }
         TablaPersonaje.setModel(modelo);
@@ -56,10 +56,12 @@ public class PersonajeVentana extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         TablaPersonaje = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtnomper = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Nombre Personaje:");
+        jLabel1.setText("Nombre actor:");
 
         jLabel2.setText("Rol del Personaje:");
 
@@ -81,18 +83,20 @@ public class PersonajeVentana extends javax.swing.JFrame {
 
         TablaPersonaje.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "NOMBRE", "ROL", "GENERO"
+                "NOMBRE", "NOMBRE PER", "ROL", "GENERO"
             }
         ));
         jScrollPane1.setViewportView(TablaPersonaje);
 
         jLabel4.setText("PERSONAJES");
+
+        jLabel5.setText("Nombre personaje:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -103,26 +107,25 @@ public class PersonajeVentana extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtgenero, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtrol, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(btnCrear)
-                                .addGap(56, 56, 56)
-                                .addComponent(btnListar)
-                                .addGap(91, 91, 91))))
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtgenero, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(txtrol, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(txtnombre, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtnomper)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(15, 15, 15)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(btnCrear)
+                        .addGap(50, 50, 50)
+                        .addComponent(btnListar)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -134,19 +137,27 @@ public class PersonajeVentana extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(txtnomper, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtrol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(32, 32, 32)
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtgenero, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(53, 53, 53)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtgenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(btnCrear)
+                    .addComponent(btnListar))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnListar)
-                    .addComponent(btnCrear))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(15, 15, 15))
         );
@@ -156,22 +167,25 @@ public class PersonajeVentana extends javax.swing.JFrame {
 
     private void btnListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarActionPerformed
         String nombre = txtnombre.getText();
+        String nombrePer = txtnomper.getText();
         String funcionPer = txtrol.getText();
         String generoMof = txtgenero.getText();
 
-        Personaje personaje = new Personaje(nombre, funcionPer, generoMof);
+        Personaje personaje = new Personaje(nombre, nombrePer,funcionPer, generoMof);
 
-        if (!nombre.isBlank() && !funcionPer.isBlank() && !generoMof.isBlank()) {
-            String[] params = new String[3];
+        if (!nombre.isBlank() && !funcionPer.isBlank() && !generoMof.isBlank() && !nombrePer.isBlank()) {
+            String[] params = new String[4];
             params[0] = nombre;
-            params[1] = funcionPer;
-            params[2] = generoMof;
+            params[1] = nombrePer;
+            params[2] = funcionPer;
+            params[3] = generoMof;
 
             personajeCtrl.crear(params);
         }
         
         cargarPersonajeTablatelf();
         txtnombre.setText("");
+        txtnomper.setText("");
         txtrol.setText("");
         txtgenero.setText("");
 
@@ -180,21 +194,24 @@ public class PersonajeVentana extends javax.swing.JFrame {
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
 
         String nombre = txtnombre.getText();
+        String nombrePer = txtnomper.getText();
         String funcionPer = txtrol.getText();
         String generoMof = txtgenero.getText();
 
-        Personaje personaje = new Personaje(nombre, funcionPer, generoMof);
+        Personaje personaje = new Personaje(nombre, nombrePer, funcionPer, generoMof);
 
-        if (!nombre.isBlank() && !funcionPer.isBlank() && !generoMof.isBlank()) {
-            String[] params = new String[3];
+        if (!nombre.isBlank() && !funcionPer.isBlank() && !generoMof.isBlank() && !nombrePer.isBlank()) {
+            String[] params = new String[4];
             params[0] = nombre;
-            params[1] = funcionPer;
-            params[2] = generoMof;
+            params[1] = nombrePer;
+            params[2] = funcionPer;
+            params[3] = generoMof;
 
             personajeCtrl.crear(params);
         }
 
         txtnombre.setText("");
+        txtnomper.setText("");
         txtrol.setText("");
         txtgenero.setText("");
 
@@ -245,9 +262,11 @@ public class PersonajeVentana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtgenero;
     private javax.swing.JTextField txtnombre;
+    private javax.swing.JTextField txtnomper;
     private javax.swing.JTextField txtrol;
     // End of variables declaration//GEN-END:variables
 }

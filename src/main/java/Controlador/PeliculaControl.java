@@ -17,7 +17,7 @@ public class PeliculaControl {
     private final PeliculaServicio peliculaServicio = new PeliculaServicio();
     
     public Pelicula crear(String [] params, int fecha){
-        var pelicula = new Pelicula(params[0],params[1],params[2],fecha); 
+        var pelicula = new Pelicula(params[0],params[1],params[2],params[3],fecha); 
         this.peliculaServicio.crear(pelicula);
         return pelicula;
     }

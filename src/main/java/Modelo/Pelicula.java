@@ -12,15 +12,25 @@ import java.util.Objects;
  */
 public class Pelicula {
     public String nombre;
+    public String nombreActor;
     public String genero;
     public String paisOrigen;
     public int fechaPublicacion;
 
-    public Pelicula(String nombre, String genero, String paisOrigen, int fechaPublicacion) {
+    public Pelicula(String nombre, String nombreActor, String genero, String paisOrigen, int fechaPublicacion) {
         this.nombre = nombre;
+        this.nombreActor = nombreActor;
         this.genero = genero;
         this.paisOrigen = paisOrigen;
         this.fechaPublicacion = fechaPublicacion;
+    }
+
+    public String getNombreActor() {
+        return nombreActor;
+    }
+
+    public void setNombreActor(String nombreActor) {
+        this.nombreActor = nombreActor;
     }
 
     public String getNombre() {
@@ -80,10 +90,7 @@ public class Pelicula {
 
     @Override
     public String toString() {
-        return "Pelicula{" + "nombre=" + nombre + ", genero=" + genero + ", paisOrigen=" + paisOrigen + ", fechaPublicacion=" + fechaPublicacion + '}';
+        return "Pelicula{" + "nombre=" + nombre + ", nombreActor=" + nombreActor + ", genero=" + genero + ", paisOrigen=" + paisOrigen + ", fechaPublicacion=" + fechaPublicacion + '}';
     }
-
-    
-   
-    
+  
 }

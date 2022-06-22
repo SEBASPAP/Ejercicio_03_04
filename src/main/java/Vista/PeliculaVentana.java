@@ -29,7 +29,8 @@ public class PeliculaVentana extends javax.swing.JFrame {
             Object[] rowData = {pelicula.getNombre(), 
                         pelicula.getGenero(), 
                         pelicula.getPaisOrigen(), 
-                        pelicula.getFechaPublicacion()};
+                        pelicula.getFechaPublicacion(),
+                        pelicula.getNombreActor()};
             modelo.addRow(rowData);
         }
         TablaPelicula.setModel(modelo);
@@ -56,10 +57,13 @@ public class PeliculaVentana extends javax.swing.JFrame {
         btncrear = new javax.swing.JButton();
         btnlistar = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtnombreactor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setText("NOMBRE:");
+        jLabel1.setText("NOMBRE PELICULA:");
 
         jLabel2.setText("GENERO:");
 
@@ -75,20 +79,20 @@ public class PeliculaVentana extends javax.swing.JFrame {
 
         TablaPelicula.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "NOMBRE", "GENERO", "PAIS ORIGEN", "AÑO"
+                "NOMBRE PEL", "GENERO", "PAIS ORIGEN", "AÑO", "NOMBRE ACT"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                true, true, true, false
+                true, true, true, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -117,6 +121,8 @@ public class PeliculaVentana extends javax.swing.JFrame {
 
         jLabel5.setText("PELICULAS");
 
+        jLabel6.setText("ACTOR:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -124,30 +130,35 @@ public class PeliculaVentana extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(16, 16, 16)
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btncrear)
+                                .addGap(72, 72, 72)
+                                .addComponent(btnlistar)
+                                .addGap(118, 118, 118))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(jLabel4)
+                                                .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING))
+                                            .addComponent(jLabel6))
                                         .addGap(38, 38, 38)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(txtnombre, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                                             .addComponent(txtgenero)
                                             .addComponent(txtfecha, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                                            .addComponent(txtpais)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(0, 0, Short.MAX_VALUE)
-                                        .addComponent(btncrear)
-                                        .addGap(71, 71, 71)
-                                        .addComponent(btnlistar))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(151, 151, 151)
-                                .addComponent(jLabel5)))
+                                            .addComponent(txtpais)
+                                            .addComponent(txtnombreactor))))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(151, 151, 151)
+                        .addComponent(jLabel5)
                         .addGap(119, 119, 119))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE))
                 .addContainerGap())
@@ -158,26 +169,31 @@ public class PeliculaVentana extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addComponent(jLabel5)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtgenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtpais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(46, 46, 46)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtgenero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtpais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(txtfecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addComponent(txtnombreactor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6))
+                .addGap(45, 45, 45)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btncrear)
                     .addComponent(btnlistar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -194,6 +210,7 @@ public class PeliculaVentana extends javax.swing.JFrame {
         String nombre = txtnombre.getText();
         String genero = txtgenero.getText();
         String pais = txtpais.getText();
+        String nombreact = txtnombreactor.getText();
         int fecha = 0;
         try {
               fecha = Integer.parseInt(txtfecha.getText());
@@ -201,20 +218,21 @@ public class PeliculaVentana extends javax.swing.JFrame {
             System.out.println(e);
         }
         
-        Pelicula pelicula = new Pelicula(nombre, genero, pais, fecha);
+        Pelicula pelicula = new Pelicula(nombre,nombreact,genero, pais, fecha);
 
         if (!nombre.isBlank() && !genero.isBlank() && !pais.isBlank() && !txtfecha.getText().isBlank()) {
-            String[] params = new String[3];
+            String[] params = new String[4];
             params[0] = nombre;
-            params[1] = genero;
-            params[2] = pais;
-            
+            params[1] = nombreact;
+            params[2] = genero;
+            params[3] = pais;
 
             peliculaCtrl.crear(params,fecha);
         }
 
         cargarPeliculaTabla();
         txtnombre.setText("");
+        txtnombreactor.setText("");
         txtgenero.setText("");
         txtpais.setText("");
         txtfecha.setText("");
@@ -225,21 +243,25 @@ public class PeliculaVentana extends javax.swing.JFrame {
         String nombre = txtnombre.getText();
         String genero = txtgenero.getText();
         String pais = txtpais.getText();
+        String nombreact = txtnombreactor.getText();
         
         int fecha = Integer.parseInt(txtfecha.getText());
         
-        Pelicula pelicula = new Pelicula(nombre, genero, pais, fecha);
+        Pelicula pelicula = new Pelicula(nombre,nombreact, genero, pais, fecha);
 
         if (!nombre.isBlank() && !genero.isBlank() && !pais.isBlank() && !txtfecha.getText().isBlank() ) {
-            String[] params = new String[3];
+            String[] params = new String[4];
             params[0] = nombre;
-            params[1] = genero;
-            params[2] = pais;
+            params[1] = nombreact;
+            params[2] = genero;
+            params[3] = pais;
+
 
             peliculaCtrl.crear(params,fecha);
         }
 
         txtnombre.setText("");
+        txtnombreactor.setText("");
         txtgenero.setText("");
         txtpais.setText("");
         txtfecha.setText("");
@@ -289,10 +311,12 @@ public class PeliculaVentana extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField txtfecha;
     private javax.swing.JTextField txtgenero;
     private javax.swing.JTextField txtnombre;
+    private javax.swing.JTextField txtnombreactor;
     private javax.swing.JTextField txtpais;
     // End of variables declaration//GEN-END:variables
 }
