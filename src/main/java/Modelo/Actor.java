@@ -15,6 +15,18 @@ public class Actor {
     public String nacionalidad;
     public int fechanacimiento;
     public int edad;
+    Personaje Personaje;
+    Pelicula Pelicula;
+    
+    public Actor(String nombre, String nacionalidad, int fechanacimiento, int edad, Personaje Personaje, Pelicula Pelicula) {
+        this.nombre = nombre;
+        this.nacionalidad = nacionalidad;
+        this.fechanacimiento = fechanacimiento;
+        this.edad = edad;
+        this.Personaje = Personaje;
+        this.Pelicula = Pelicula;
+    }
+
 
     public Actor(String nombre, String nacionalidad, int fechanacimiento, int edad) {
         this.nombre = nombre;
@@ -77,11 +89,26 @@ public class Actor {
         return Objects.equals(this.nombre, other.nombre);
     }
 
-    
+    public Personaje getPersonaje() {
+        return Personaje;
+    }
+
+    public void setPersonaje(Personaje Personaje) {
+        this.Personaje = Personaje;
+    }
+
+    public Pelicula getPelicula() {
+        return Pelicula;
+    }
+
+    public void setPelicula(Pelicula Pelicula) {
+        this.Pelicula = Pelicula;
+    }
+
     @Override
     public String toString() {
-        return "Actor{" + "nombre=" + nombre + ", nacionalidad=" + nacionalidad + ", fechanacimiento=" + fechanacimiento + ", edad=" + edad + '}';
-    }
-    
-    
+        return "Actor{" + "nombre=" + nombre + ", nacionalidad=" + nacionalidad + ", "
+                + "fechanacimiento=" + fechanacimiento + ", edad=" + edad + ", Personaje=" 
+                + Personaje + ", Pelicula=" + Pelicula + '}';
+    }  
 }
