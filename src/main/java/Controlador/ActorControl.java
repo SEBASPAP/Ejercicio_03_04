@@ -19,12 +19,10 @@ import java.util.List;
 public class ActorControl {
 
     Actor act;
-    Personaje personaje;
-    Pelicula Pelicula;
+    //Personaje personaje;
+    //Pelicula Pelicula;
 
     private final ActorServicio actorServicio = new ActorServicio();
-    private final PersonajeServicio personajeServicio = new PersonajeServicio();
-    private final PeliculaServicio peliculaServicio = new PeliculaServicio();
 
     public Actor crear(String[] params, int fechaNacimiento, int edad,Personaje personaje,Pelicula pelicula) {  //,Personaje personaje,Pelicula pelicula
         // Personaje personaje; //= this.personajeServicio.crear(personaje);
