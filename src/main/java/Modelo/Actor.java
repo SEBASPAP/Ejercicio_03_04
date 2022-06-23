@@ -116,12 +116,5 @@ public class Actor {
                 + Personaje + ", Pelicula=" + Pelicula + '}';
     }  
     
-//    public Personaje modificarPer(Personaje personaje) {
-//        
-//        if (personaje.getNombre()== Personaje.getNombre()){
-//            
-//        }
-//       return null;
-//    }
     
 }

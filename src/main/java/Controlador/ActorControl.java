@@ -8,8 +8,6 @@ import Modelo.Actor;
 import Modelo.Pelicula;
 import Modelo.Personaje;
 import Servicio.ActorServicio;
-import Servicio.PeliculaServicio;
-import Servicio.PersonajeServicio;
 import java.util.List;
 
 /**
@@ -19,14 +17,10 @@ import java.util.List;
 public class ActorControl {
 
     Actor act;
-    //Personaje personaje;
-    //Pelicula Pelicula;
 
     private final ActorServicio actorServicio = new ActorServicio();
 
     public Actor crear(String[] params, int fechaNacimiento, int edad,Personaje personaje,Pelicula pelicula) {  //,Personaje personaje,Pelicula pelicula
-        // Personaje personaje; //= this.personajeServicio.crear(personaje);
-        // Pelicula pelicula; //= this.peliculaServicio.crear(pelicula);
         var actor = new Actor(params[0], params[1], fechaNacimiento, edad,personaje,pelicula); //,personaje,pelicula
         this.actorServicio.crear(actor);
         return actor;
